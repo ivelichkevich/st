@@ -2053,3 +2053,14 @@ run:
 
 	return 0;
 }
+
+void
+opencopied(const Arg *arg)
+{
+	char * const clip = xsel.clipboard;
+	if(!clip) {
+		fprintf(stderr, "Warning: nothing copied to clipboard\n");
+		return;
+	}
+    if (!fork()) { execlp((char *)arg->v, (char *)arg->v, clip, NULL); }
+}

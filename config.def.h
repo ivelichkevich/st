@@ -7,7 +7,7 @@
  */
 //static char *font = "Liberation Mono:pixelsize=12:antialias=true:autohint=true";
 static char *font = "UbuntuMono Nerd Font:pixelsize=13:antialias=true:autohint=true";
-static int borderpx = 4;
+static int borderpx = 2;
 
 /*
  * What program is execed by st depends of these precedence rules:
@@ -170,6 +170,7 @@ static unsigned int defaultattr = 11;
 static uint forcemousemod = ShiftMask;
 
 const unsigned int mousescrollincrement = 1;
+static char *url_opener =  "xdg-open" ;
 
 static char *openurlcmd[] = { "/bin/sh", "-c", "st-urlhandler", "externalpipe", NULL };
 
@@ -213,6 +214,8 @@ static Shortcut shortcuts[] = {
 	{ TERMMOD,              XK_Y,           selpaste,       {.i =  0} },
 	{ ShiftMask,            XK_Insert,      selpaste,       {.i =  0} },
 	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
+	{ MODKEY,               XK_o,           opencopied,     {.v = "xdg-open"} },
+	{ MODKEY,               XK_n,           newterm,        {.i =  0} },
 	{ ShiftMask,            XK_Page_Up,     kscrollup,      {.i = -1} },
 	{ ShiftMask,            XK_Page_Down,   kscrolldown,    {.i = -1} },
 	{ ShiftMask,            XK_Up,     	    kscrollup,      {.i =  1} },
@@ -493,5 +496,3 @@ static char ascii_printable[] =
 	"@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_"
 	"`abcdefghijklmnopqrstuvwxyz{|}~";
 
-/* URL Opener */
-static char *url_opener = "xdg-open";

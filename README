@@ -6,6 +6,8 @@ st is a simple terminal emulator for X which sucks less.
 Requirements
 ------------
 In order to build st you need the Xlib header files.
+xclip
+xdg-utils
 
 Patches
 ----------
@@ -20,6 +22,8 @@ https://raw.githubusercontent.com/LukeSmithxyz/st/master/st-copyout
 st-url-mouse-click.diff
 https://st.suckless.org/patches/w3m/st-w3m-0.8.3.diff
 https://st.suckless.org/patches/externalpipe/editscreen.sh
+https://st.suckless.org/patches/newterm/st-newterm-0.8.2.diff # Alt+n
+https://st.suckless.org/patches/open_copied_url/st-openclipboard-20190202-3be4cf1.diff  Alt+o
 
 Installation
 ------------

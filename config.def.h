@@ -178,7 +178,7 @@ static char *copyurlcmd[] = { "/bin/sh", "-c",
     "externalpipe", NULL };
 
 static char *copyoutput[] = { "/bin/sh", "-c", "st-copyout", "externalpipe", NULL };
-static char *editscreen[] = { "/bin/sh", "-c", "editscreen", "externalpipe", NULL };
+static char *editscreen[] = { "/bin/sh", "-c", "st-editscreen", "externalpipe", NULL };
 
 /*
  * Internal mouse shortcuts.

@@ -17,6 +17,8 @@ https://st.suckless.org/patches/externalpipe/st-externalpipe-0.8.4.diff
 https://st.suckless.org/patches/externalpipe/st-externalpipe-eternal-0.8.3.diff
 https://raw.githubusercontent.com/LukeSmithxyz/st/master/st-urlhandler -  need xdg-utils
 https://raw.githubusercontent.com/LukeSmithxyz/st/master/st-copyout
+st-url-mouse-click.diff
+https://st.suckless.org/patches/w3m/st-w3m-0.8.3.diff
 
 
 Installation

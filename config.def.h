@@ -178,6 +178,7 @@ static char *copyurlcmd[] = { "/bin/sh", "-c",
     "externalpipe", NULL };
 
 static char *copyoutput[] = { "/bin/sh", "-c", "st-copyout", "externalpipe", NULL };
+static char *editscreen[] = { "/bin/sh", "-c", "editscreen", "externalpipe", NULL };
 
 /*
  * Internal mouse shortcuts.
@@ -214,11 +215,12 @@ static Shortcut shortcuts[] = {
 	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
 	{ ShiftMask,            XK_Page_Up,     kscrollup,      {.i = -1} },
 	{ ShiftMask,            XK_Page_Down,   kscrolldown,    {.i = -1} },
-	{ ShiftMask,            XK_Up,     	kscrollup,      {.i =  1} },
-	{ ShiftMask,            XK_Down,   	kscrolldown,    {.i =  1} },
+	{ ShiftMask,            XK_Up,     	    kscrollup,      {.i =  1} },
+	{ ShiftMask,            XK_Down,   	    kscrolldown,    {.i =  1} },
 	{ MODKEY,               XK_l,           externalpipe,   {.v = openurlcmd } },
 	{ MODKEY,               XK_y,           externalpipe,   {.v = copyurlcmd } },
 	{ MODKEY,               XK_o,           externalpipe,   {.v = copyoutput } },
+	{ MODKEY,               XK_e,           externalpipe,   {.v = editscreen } },
 };
 
 /*

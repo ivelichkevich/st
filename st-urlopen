@@ -1,0 +1,5 @@
+#!/bin/sh
+
+chosen="$@"
+[ -z "$chosen" ] && exit
+setsid xdg-open "$chosen" >/dev/null 2>&1 &

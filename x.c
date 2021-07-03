@@ -693,10 +693,7 @@ brelease(XEvent *e)
 
 	if (mouseaction(e, 1))
 		return;
-	if (e->xbutton.button == Button1) {
-		mousesel(e, 1);
-		//openUrlOnClick(evcol(e), evrow(e), url_opener); //todo crash on select archVm in prompt
-    }
+	if (e->xbutton.button == Button1) { mousesel(e, 1); }
 }
 
 void
@@ -2057,10 +2054,11 @@ run:
 void
 opencopied(const Arg *arg)
 {
-	char * const clip = xsel.clipboard;
+	char * const clip = xsel.primary; // clipboard;
 	if(!clip) {
 		fprintf(stderr, "Warning: nothing copied to clipboard\n");
 		return;
 	}
-    if (!fork()) { execlp((char *)arg->v, (char *)arg->v, clip, NULL); }
+    if (!fork()) { execlp(((char **)arg->v)[0], ((char **)arg->v)[0], clip, NULL); }
 }
+

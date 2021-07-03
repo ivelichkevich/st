@@ -2770,8 +2770,7 @@ redraw(void)
 }
 
 void
-openUrlOnClick(int col, int row, char* url_opener)
-{
+openUrlOnClick(int col, int row,const char* url_opener) {
 	int row_start = row;
 	int col_start = col;
 	int row_end = row;
@@ -2812,8 +2811,14 @@ openUrlOnClick(int col, int row, char* url_opener)
 			row_start++;
 		}
 	} while (row_start != row_end || col_start != col_end);
+    url[url_index] ='\0';
 
-	if (strncmp("http", url, 4) != 0) { return; }
-
+    if (strncmp("http", url, 4) != 0) { return; }
     if (!fork()) { execlp(url_opener, url_opener, url, NULL); }
 }
+
+void 
+openurl(const Arg *arg) {
+    openUrlOnClick(sel.ob.x, sel.ob.y, ((char**)arg->v)[0]);
+}
+

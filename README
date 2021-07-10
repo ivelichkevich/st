@@ -25,6 +25,9 @@ https://st.suckless.org/patches/externalpipe/editscreen.sh
 https://st.suckless.org/patches/newterm/st-newterm-0.8.2.diff # Alt+n
 https://st.suckless.org/patches/open_copied_url/st-openclipboard-20190202-3be4cf1.diff  Alt+o
 
+https://st.suckless.org/patches/anysize/st-anysize-0.8.4.diff
+Delete emty space under st window
+
 Installation
 ------------
 Edit config.mk to match your local setup (st is installed into

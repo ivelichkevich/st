@@ -25,9 +25,6 @@
                 "MIMode": "gdb",
                 "miDebuggerPath": "/usr/bin/gdb"  
             },
-            "environment": [
-                {"name":"DISPLAY", "value":"localhost:10.0"},
-            ],
         }
     ]
 }

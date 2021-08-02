@@ -94,7 +94,7 @@ char *termname = "st-256color";
  */
 unsigned int tabspaces = 8;
 
-/* Terminal colors (16 first used in escape sequence) */
+/* Terminal colors (16 first used in escape sequence) https://terminal.sexy */
 static const char *colorname[] = {
 	/* 8 normal colors */
 	"#002e38", //  0: black
@@ -107,9 +107,9 @@ static const char *colorname[] = {
 	"gray90",  //  7: white
 
 	/* 8 bright colors */
-	"#b5d3ff", //  8: brblack
-	"#ff4545", //  9: brred
-	"#7cc67f", // 10: brgreen
+	"#0093BC", //  8: brblack
+    "#B63B39", //  9: brred
+	"#5cee96", // 10: brgreen
 	"#ffd247", // 11: bryellow
 	"#268ad2", // 12: brblue
 	"#ad61ba", // 13: brmagenta
@@ -184,44 +184,44 @@ static char *editscreen[] = { "/bin/sh", "-c", "st-editscreen", "externalpipe", 
  */
 static MouseShortcut mshortcuts[] = {
 	/* mask                 button   function        argument       release */
-	{ ShiftMask,            Button4, kscrollup,      {.i = mousescrollincrement },	0, /* !alt */ -1 },
-	{ ShiftMask,            Button5, kscrolldown,    {.i = mousescrollincrement },	0, /* !alt */ -1 },
-	{ XK_ANY_MOD,           Button3, selpaste,       {.i = 0},      1 },
-	{ ShiftMask,            Button1, openurl,        {.v = def_opener}, 1, 0},
-	{ ShiftMask,            Button4, ttysend,        {.s = "\033[5;2~"} },
-	{ XK_ANY_MOD,           Button4, ttysend,        {.s = "\031"} },
-	{ ShiftMask,            Button5, ttysend,        {.s = "\033[6;2~"} },
-	{ XK_ANY_MOD,           Button5, ttysend,        {.s = "\005"} },
+	{ XK_ANY_MOD,           Button4, kscrollup,      {.i = mousescrollincrement },	0, /* !alt */ -1 },
+	{ XK_ANY_MOD,           Button5, kscrolldown,    {.i = mousescrollincrement },	0, /* !alt */ -1 },
+	{ XK_ANY_MOD,           Button4, ttysend,        {.s = "\031"} }, 			/* scroll in vim */
+	{ XK_ANY_MOD,           Button5, ttysend,        {.s = "\005"} }, 			/* scroll in vim */
+	{ XK_ANY_MOD,           Button3, selpaste,       {.i = 0},      1 },		/* paste selected right btn clk */
+	{ ControlMask,          Button1, openurl,        {.v = def_opener}, 1, 0},	/* ^+clk on url open with mimeo */
+	//{ ControlMask,          Button4, ttysend,        {.s = "\033[5;2~"} },  	/* what is it? */
+	//{ ShiftMask,            Button5, ttysend,        {.s = "\033[6;2~"} },  	/* what is it? */
 };
 
 /* Internal keyboard shortcuts. */
-#define MODKEY Mod1Mask
+#define MODKEY Mod1Mask // ALT, use xmodmap - to check settings
 #define TERMMOD (Mod1Mask|ShiftMask)
 
 static Shortcut shortcuts[] = {
 	/* mask                 keysym          function        argument */
-	{ XK_ANY_MOD,           XK_Break,       sendbreak,      {.i =  0} },
-	{ ControlMask,          XK_Print,       toggleprinter,  {.i =  0} },
-	{ ShiftMask,            XK_Print,       printscreen,    {.i =  0} },
-	{ XK_ANY_MOD,           XK_Print,       printsel,       {.i =  0} },
+	{ XK_ANY_MOD,           XK_Break,       sendbreak,      {.i =  0} },   /* what is it? */
+	//{ ControlMask,          XK_Print,       toggleprinter,  {.i =  0} }, /* what is it? */ //used in dwm for screenshot
+	//{ ShiftMask,            XK_Print,       printscreen,    {.i =  0} }, /* what is it? */ //used in dwm for screenshot
+	//{ XK_ANY_MOD,           XK_Print,       printsel,       {.i =  0} }, /* what is it? */ //used in dwm for screenshot
 	{ TERMMOD,              XK_Up, 	        zoom,           {.f = +1} },
 	{ TERMMOD,              XK_Down,        zoom,           {.f = -1} },
 	{ TERMMOD,              XK_Home,        zoomreset,      {.f =  0} },
 	{ TERMMOD,              XK_C,           clipcopy,       {.i =  0} },
 	{ TERMMOD,              XK_V,           clippaste,      {.i =  0} },
-	{ TERMMOD,              XK_Y,           selpaste,       {.i =  0} },
+	{ TERMMOD,              XK_B,           selpaste,       {.i =  0} },
 	{ ShiftMask,            XK_Insert,      selpaste,       {.i =  0} },
-	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
-	{ MODKEY,               XK_w,           opencopied,     {.v =  def_opener} },
+	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} }, /* what is it ? */
+	{ MODKEY,               XK_w,           opencopied,     {.v =  def_opener} }, // open in memeo file in cb
 	{ MODKEY,               XK_n,           newterm,        {.i =  0} },
 	{ ShiftMask,            XK_Page_Up,     kscrollup,      {.i = -1} },
 	{ ShiftMask,            XK_Page_Down,   kscrolldown,    {.i = -1} },
 	{ ShiftMask,            XK_Up,     	    kscrollup,      {.i =  1} },
 	{ ShiftMask,            XK_Down,   	    kscrolldown,    {.i =  1} },
-	{ MODKEY,               XK_l,           externalpipe,   {.v = openurlcmd } },
-	{ MODKEY,               XK_y,           externalpipe,   {.v = copyurlcmd } },
-	{ MODKEY,               XK_o,           externalpipe,   {.v = copyoutput } },
-	{ MODKEY,               XK_e,           externalpipe,   {.v = editscreen } },
+	{ MODKEY,               XK_l,           externalpipe,   {.v = openurlcmd } }, // get urls from st buf and show in dmenu to open
+	{ MODKEY,               XK_y,           externalpipe,   {.v = copyurlcmd } }, // scan st buf for urls and copy selected to cb
+	{ MODKEY,               XK_o,           externalpipe,   {.v = copyoutput } }, // dmenu list of all entered cmds and paste output to st
+	{ MODKEY,               XK_e,           externalpipe,   {.v = editscreen } }, // open st buf in $EDITOR
 };
 
 /*

@@ -201,9 +201,15 @@ static MouseShortcut mshortcuts[] = {
 static Shortcut shortcuts[] = {
 	/* mask                 keysym          function        argument */
 	{ XK_ANY_MOD,           XK_Break,       sendbreak,      {.i =  0} },   /* what is it? */
+	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },   /* what is it ? */
+	{ MODKEY,               XK_n,           newterm,        {.i =  0} },   /* open new st */
 	//{ ControlMask,          XK_Print,       toggleprinter,  {.i =  0} }, /* what is it? */ //used in dwm for screenshot
 	//{ ShiftMask,            XK_Print,       printscreen,    {.i =  0} }, /* what is it? */ //used in dwm for screenshot
 	//{ XK_ANY_MOD,           XK_Print,       printsel,       {.i =  0} }, /* what is it? */ //used in dwm for screenshot
+	{ ShiftMask,            XK_Page_Up,     kscrollup,      {.i = -1} },
+	{ ShiftMask,            XK_Page_Down,   kscrolldown,    {.i = -1} },
+	{ ShiftMask,            XK_Up,     	    kscrollup,      {.i =  1} },
+	{ ShiftMask,            XK_Down,   	    kscrolldown,    {.i =  1} },
 	{ TERMMOD,              XK_Up, 	        zoom,           {.f = +1} },
 	{ TERMMOD,              XK_Down,        zoom,           {.f = -1} },
 	{ TERMMOD,              XK_Home,        zoomreset,      {.f =  0} },
@@ -211,17 +217,11 @@ static Shortcut shortcuts[] = {
 	{ TERMMOD,              XK_V,           clippaste,      {.i =  0} },
 	{ TERMMOD,              XK_B,           selpaste,       {.i =  0} },
 	{ ShiftMask,            XK_Insert,      selpaste,       {.i =  0} },
-	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} }, /* what is it ? */
 	{ MODKEY,               XK_w,           opencopied,     {.v =  def_opener} }, // open in memeo file in cb
-	{ MODKEY,               XK_n,           newterm,        {.i =  0} },
-	{ ShiftMask,            XK_Page_Up,     kscrollup,      {.i = -1} },
-	{ ShiftMask,            XK_Page_Down,   kscrolldown,    {.i = -1} },
-	{ ShiftMask,            XK_Up,     	    kscrollup,      {.i =  1} },
-	{ ShiftMask,            XK_Down,   	    kscrolldown,    {.i =  1} },
-	{ MODKEY,               XK_l,           externalpipe,   {.v = openurlcmd } }, // get urls from st buf and show in dmenu to open
-	{ MODKEY,               XK_y,           externalpipe,   {.v = copyurlcmd } }, // scan st buf for urls and copy selected to cb
-	{ MODKEY,               XK_o,           externalpipe,   {.v = copyoutput } }, // dmenu list of all entered cmds and paste output to st
-	{ MODKEY,               XK_e,           externalpipe,   {.v = editscreen } }, // open st buf in $EDITOR
+	{ MODKEY,               XK_l,           externalpipe,   {.v =  openurlcmd } }, // get urls from st buf and show in dmenu to open
+	{ MODKEY,               XK_y,           externalpipe,   {.v =  copyurlcmd } }, // scan st buf for urls and copy selected to cb
+	{ MODKEY,               XK_o,           externalpipe,   {.v =  copyoutput } }, // dmenu list of all entered cmds and paste output to st
+	{ MODKEY,               XK_e,           externalpipe,   {.v =  editscreen } }, // open st buf in $EDITOR
 };
 
 /*

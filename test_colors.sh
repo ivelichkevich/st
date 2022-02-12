@@ -38,3 +38,7 @@ cat << EOF
 
 EOF
 
+tput colors
+
+msgcat --color=test
+

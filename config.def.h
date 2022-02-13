@@ -108,7 +108,7 @@ static const char *colorname[] = {
 
 	/* 8 bright colors */
 	"#0093BC", //  8: brblack
-    "#B63B39", //  9: brred
+    "#d44e57", //  9: brred
 	"#5cee96", // 10: brgreen
 	"#ffd247", // 11: bryellow
 	"#268ad2", // 12: brblue
@@ -123,6 +123,8 @@ static const char *colorname[] = {
 	"#555555",
 	"gray90", /* default foreground colour */
 	"black", /* default background colour */
+    "#363535",
+    "#1c1c1c",
 };
 
 
@@ -130,8 +132,8 @@ static const char *colorname[] = {
  * Default colors (colorname index)
  * foreground, background, cursor, reverse cursor
  */
-unsigned int defaultfg = 258;
-unsigned int defaultbg = 259;
+unsigned int defaultfg = 258; // 258 || 7
+unsigned int defaultbg = 261; // 259 || 0
 unsigned int defaultcs = 256;
 static unsigned int defaultrcs = 257;
 
@@ -224,6 +226,7 @@ static Shortcut shortcuts[] = {
 	{ MODKEY,               XK_y,           externalpipe,   {.v =  copyurlcmd } }, // scan st buf for urls and copy selected to cb
 	{ MODKEY,               XK_o,           externalpipe,   {.v =  copyoutput } }, // dmenu list of all entered cmds and paste output to st
 	{ MODKEY,               XK_e,           externalpipe,   {.v =  editscreen } }, // open st buf in $EDITOR
+	{ TERMMOD,              XK_X,           invert,         { }       },           // switch dark / light mode
 };
 
 /*

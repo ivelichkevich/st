@@ -226,6 +226,7 @@ static Shortcut shortcuts[] = {
 	{ MODKEY,               XK_y,           externalpipe,   {.v =  copyurlcmd } }, // scan st buf for urls and copy selected to cb
 	{ MODKEY,               XK_o,           externalpipe,   {.v =  copyoutput } }, // dmenu list of all entered cmds and paste output to st
 	{ MODKEY,               XK_e,           externalpipe,   {.v =  editscreen } }, // open st buf in $EDITOR
+	{ TERMMOD,              XK_X,           invert,         { }       },           // switch dark / light mode
 };
 
 /*

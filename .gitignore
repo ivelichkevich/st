@@ -60,7 +60,6 @@ dkms.conf
 *.log
 
 # patches
-*.diff
 st
 
 # End of https://www.toptal.com/developers/gitignore/api/C

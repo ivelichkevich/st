@@ -188,14 +188,14 @@ static char *editscreen[] = { "/bin/sh", "-c", "st-editscreen", "externalpipe", 
  */
 static MouseShortcut mshortcuts[] = {
 	/* mask                 button   function        argument       release */
-	{ ShiftMask,            Button4, kscrollup,      {.i = mousescrollincrement },	0, /* !alt */ -1 },
-	{ ShiftMask,            Button5, kscrolldown,    {.i = mousescrollincrement },	0, /* !alt */ -1 },
-	{ XK_ANY_MOD,           Button3, selpaste,       {.i = 0},      1 },
-	{ ShiftMask,            Button1, openurl,        {.v = def_opener}, 1, 0},
-	{ ShiftMask,            Button4, ttysend,        {.s = "\033[5;2~"} },
-	{ XK_ANY_MOD,           Button4, ttysend,        {.s = "\031"} },
-	{ ShiftMask,            Button5, ttysend,        {.s = "\033[6;2~"} },
-	{ XK_ANY_MOD,           Button5, ttysend,        {.s = "\005"} },
+	{ XK_ANY_MOD,           Button4, kscrollup,      {.i = mousescrollincrement },	0, /* !alt */ -1 },
+	{ XK_ANY_MOD,           Button5, kscrolldown,    {.i = mousescrollincrement },	0, /* !alt */ -1 },
+	{ XK_ANY_MOD,           Button4, ttysend,        {.s = "\031"} }, 			/* scroll in vim */
+	{ XK_ANY_MOD,           Button5, ttysend,        {.s = "\005"} }, 			/* scroll in vim */
+	{ XK_ANY_MOD,           Button3, selpaste,       {.i = 0},      1 },		/* paste selected right btn clk */
+	{ ControlMask,          Button1, openurl,        {.v = def_opener}, 1, 0},	/* ^+clk on url open with mimeo */
+	//{ ControlMask,          Button4, ttysend,        {.s = "\033[5;2~"} },  	/* what is it? */
+	//{ ShiftMask,            Button5, ttysend,        {.s = "\033[6;2~"} },  	/* what is it? */
 };
 
 /* Internal keyboard shortcuts. */
